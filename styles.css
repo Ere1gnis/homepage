@@ -1,0 +1,222 @@
+/* @font-face {
+    font-family: 'CustomFont';
+    src: url('a.ttf') format('truetype');
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #a9bdd1 0%, #c0cfde 8.67%,#e0eaf4 13.67%, #ffffff 20.67%);
+    color: #666;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 10vh;
+    padding-left: 20vw;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    transform: scale(0.85);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.avatar-container {
+    margin-bottom: 1.5rem;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: rotateAvatar 1.5s ease-in-out;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar:active {
+    animation: clickRotate 0.5s ease-in-out;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideDown 0.8s ease-in-out 0.3s forwards;
+    color: #242a32;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.description {
+    margin-bottom: 2rem;
+}
+
+.description p {
+    margin: 0.8rem 0;
+    font-size: 24px;
+    line-height: 1.4;
+    opacity: 0;
+    animation: slideDown 0.8s ease-in-out forwards;
+    color: #858688;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.description p:nth-child(1) { animation-delay: 0.6s; }
+.description p:nth-child(2) { animation-delay: 0.9s; }
+.description p:nth-child(3) { animation-delay: 1.2s; }
+
+.links {
+    opacity: 0;
+    animation: slideDown 0.8s ease-in-out 1.5s forwards;
+}
+
+.link {
+    color: #8CA3BA;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 0.2rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #8CA3BA;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.link:hover {
+    color: #2d2b23;
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.separator {
+    color: #8CA3BA;
+    margin: 0 0.1rem;
+}
+
+.background {
+    position: absolute;
+    bottom: -15vh;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    right: 0;
+}
+
+.bg-image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+.human-image {
+    position: absolute;
+    right: 33%;
+    bottom: 15vh;
+    height: 60vh;
+    opacity: 0;
+    animation: fadeUp 1.5s ease-in-out 2s forwards;
+    z-index: 2;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateAvatar {
+    0% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes clickRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+} 

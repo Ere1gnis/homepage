@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  homepage:
+    build: .
+    container_name: ere1gnis-homepage
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:ere1gnis.me"
+      - "traefik.port=80"
+      - "traefik.protocol=http"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.backend=ere1gnis-homepage"
+      - "traefik.frontend.passHostHeader=true"
+
+networks:
+  traefik-public:
+    external: true 
